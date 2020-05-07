@@ -1,0 +1,21 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { I18NextModule } from 'angular-i18next';
+import { HomeComponent } from './home.component';
+
+@NgModule({
+  imports: [
+CommonModule,
+FormsModule,
+RouterModule,
+I18NextModule.forRoot()
+],
+  declarations: [
+HomeComponent
+]
+  
+  
+})
+export class HomeModule { }

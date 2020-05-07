@@ -1,0 +1,89 @@
+body {
+  padding-top: 15px;
+  font-size: 12px;
+}
+
+
+.form {
+  padding: 3% 6% 3% 6%;
+}
+
+.login-or {
+  position: relative;
+  font-size: 18px;
+  color: #aaa;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.span-or {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  margin-left: -25px;
+  background-color: #fff;
+  width: 50px;
+  text-align: center;
+}
+
+.hr-or {
+  background-color: #cdcdcd;
+  height: 1px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+h3 {
+  text-align: center;
+  line-height: 300%;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  height: 510px;
+  margin-top: 10%;
+  padding-top: 20px;
+  border-radius: 19px;
+  border: 2px solid #d5dbe0;
+}
+
+.login {
+  width: 30%;
+}
+
+.hide-eye {
+  float: right;
+  margin-top: -8%;
+  margin-right: 4%;
+}
+
+.center {
+  text-align: center;
+}
+
+@media screen and (max-width:600px) {
+  .card {
+    margin-top: 20%;
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .card {
+    margin-top: 20%;
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .card {
+    margin-top: 10%;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {}
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {}

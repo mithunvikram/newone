@@ -1,0 +1,130 @@
+# Default values for newone.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+app:
+  prefix: newone
+  namespace: newone
+
+logging:
+  namespace: newone-logging
+
+service:
+  type: NodePort
+  appbuilderType: NodePort
+
+  apigateway:
+    name: apigateway
+    type: NodePort
+    port: 3000  
+    targetPort: 3000
+    nodePort: 31234
+  camunda:
+    name: camunda
+    type: NodePort
+    port: 3008
+    targetPort: 3008
+  authproxy:
+    name: authproxy
+    type: NodePort
+    port: 3009
+    targetPort: 3009
+  security:
+    name: securitymanager
+    type: NodePort
+    port: 3007
+    targetPort: 3007
+  admin:
+    name: adminmanager
+    type: NodePort
+    port: 3010
+    targetPort: 3010
+  mongo:
+    name: mongo
+    type: NodePort
+    port: 27017
+    targetPort: 27017
+  desktop:
+    name: desktop
+    type: NodePort
+    port: 80
+    targetPort: 80
+  camundapod:
+    name: camundapod
+    type: NodePort
+    port: 8080
+    targetPort: 8080
+
+
+deployment:
+  defaultImagePullPolicy: IfNotPresent
+  customImagePullPolicy: Always
+  apigateway:
+     name: apigateway
+     image: geppettotest/newone-apigateway:1.0
+  mongo:
+     name: mongo
+     image: mongo:3.2   
+  camunda:
+     name: camunda
+     image: geppettotest/default-camunda:1.0
+  authproxy:
+     name: authproxy
+     image: geppettotest/default-authproxy:1.0
+  security:
+     name: securitymanager
+     image: geppettotest/default-securitymanager:1.0
+  admin:
+     name: adminmanager
+     image: geppettotest/default-adminmanager:1.0
+  desktop:
+     name: desktop
+     image: geppettotest/newone-desktop:1.0
+
+  camundapod:
+     name: camundapod
+     image: camunda/camunda-bpm-platform
+
+config:
+  vault:
+    rootToken: vault-newone-2019
+
+persistentVolume:
+  mongo:
+    storage: 5Gi  
+
+persistentVolumeClaim:
+  mongo:
+    storage: 5Gi
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

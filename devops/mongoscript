@@ -1,0 +1,39 @@
+db.roles.find(
+{
+  $or: [{
+      "role": {
+        "$in": ["Admin", "_id"]
+      }
+    },
+    {
+      "role": {
+        "$in": ["Standarduser", "_id"]
+      }
+    }
+  ]
+}
+).forEach(function (i) {
+  var temp = {
+    "firstname": "gep",
+    "lastname": "user",
+    "username": "gepUser",
+    "password": "gepUser",
+    "email": "gepUser@gmail.com",
+    "role": i._id,
+    "Idtoken": "",
+    "loggedinDate": Date.now(),
+    "loggedoutDate": Date.now()
+  }
+  if (i.role === "Admin") {
+    temp.firstname = "gep";
+    temp.lastname = "admin";
+    temp.username = "gepAdmin";
+    temp.password = "gepAdmin";
+    temp.email = "gepAdmin@gmail.com";
+    temp.role = i._id;
+    temp.Idtoken = "";
+    temp.loggedinDate = Date.now();
+    temp.loggedoutDate = Date.now();
+  }
+  db.User.insert(temp);
+});

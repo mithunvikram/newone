@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.prefix }}-system-entry
+  namespace: {{ .Values.app.namespace }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.prefix }}-system-entry
+    spec:
+      containers:
+        - name: {{ .Values.deployment.desktop.name }}-container
+          imagePullPolicy: {{ .Values.deployment.customImagePullPolicy }}
+          image: {{ .Values.deployment.desktop.image }}
+          ports:
+            - name: http-port
+              containerPort: 80
+        - name: {{ .Values.deployment.apigateway.name }}-container
+          imagePullPolicy: {{ .Values.deployment.customImagePullPolicy }}
+          image: {{ .Values.deployment.apigateway.image }}
+          ports:
+            - name: http-port
+              containerPort: 3000

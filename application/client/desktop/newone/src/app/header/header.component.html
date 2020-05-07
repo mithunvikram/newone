@@ -1,0 +1,63 @@
+<nav class='navbar navbar-inverse'>
+<div class='navbar-header'>
+<span onclick='openNav()' id='in2oj'>☰</span>
+<button class='navbar-toggle' type='button' data-toggle='collapse' data-target='#myNavbar'>
+<span class='icon-bar'>
+</span>
+<span class='icon-bar'>
+</span>
+<span class='icon-bar'>
+</span>
+</button>
+<a class='navbar-brand' href='/home'>GEPPETTO</a>
+</div>
+<div class='collapse navbar-collapse' id='myNavbar'>
+<ul class='nav navbar-nav navbar-right'>
+<li class='active'>
+<a [routerLink]="['/']">Home</a>
+</li>
+</ul>
+</div>
+<div class='sidenav' id='mySidenav'>
+<a class='closebtn' href='javascript:void(0)' onclick='closeNav()'>×</a>
+<div id='MainMenu'>
+<div class="list-group panel">
+                                        <a class="list-group-item list-group-item-success" *ngIf='userId!=null'  [routerLink]="['/home']">{{'source.home' | i18next}}</a>
+                                      </div>
+<div class="list-group panel" *ngIf='isAdminUser'>
+                                        <a class="list-group-item list-group-item-success" [routerLink]="['/admin']">{{'source.admin' | i18next}}</a>
+                                      </div>
+<div class="list-group panel">
+                                        <a class="list-group-item list-group-item-success" *ngIf='userId!=null' (click)="logout()">{{'source.logout' | i18next}}</a>
+                                      </div>
+ <li>
+                                                <a class="text" *ngIf='userId==null' [routerLink]="['/login']">{{'source.login' | i18next}}</a>
+                                            </li>
+<li>
+            <a href="#translator" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle text">
+            {{'source.selectLanguage' | i18next }}</a>
+            <ul class="collapse list-unstyled" id="translator">
+            <li>
+            <a class="text" *ngFor="let lang of languages" (click)='confirmLangModel(lang)'>{{
+                'languages.' + lang |
+                i18nextCap }}</a>
+          </li>
+            </ul>
+          </li>
+</div>
+</div>
+</nav>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'top': '100px','display': confirmLangChangeModal}">
+  <div class="modal-dialog modal-sm" role="dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>language change cause you to re-login</p>
+      </div>
+      <div class="modal-footer" style="padding: 5px">
+        <button type="button" (click)="confirmLangChange()" class="btn btn-default">Confirm</button>
+        <button type="button" (click)="onCloseHandled()" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_0fnw5vs" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Accesslevel" name="Authorize">
+    <extensionElements>
+      <biodi:bounds x="150" y="150" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="resources">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text>resources</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1rqn79m" label="resourcetype">
+        <inputExpression id="LiteralExpression_016sarj" typeRef="string">
+          <text>resourcetype</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="admin" name="Admin" typeRef="string" />
+      <output id="OutputClause_0vdltyr" label="developer" name="Developer" typeRef="string" />
+      <output id="OutputClause_16m831c" label="user" name="Standard User" typeRef="string" />
+      <rule id="DecisionRule_542304">
+        <inputEntry id="UnaryTests_952989">
+          <text>"home"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_933775">
+          <text>"Screen"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_053579">
+          <text>'{
+  "Admin": [{
+    "Access": {
+      "value": "true"
+    },
+    "Fields":[{
+    "Organisation": {
+      "value": "true"
+    },
+    "Userrole": {
+      "value": "true"
+    },
+    "Addrole": {
+      "value": "true"
+    }
+    }]
+  }],
+  "Landing":[{
+    "Access":{
+      "value":"true"
+    },
+    "Fields":[{
+      "Field1":{
+        "value":"true"
+      },
+      "Field2":{
+        "value":"true"
+      },
+      "Field3":{
+        "value":"true"
+      },
+      "Field4":{
+        "value":"true"
+      }
+    }]
+  }],
+  "Project":[{
+    "Access":{
+      "value":"true"
+    },
+    "Fields":[{
+      "Configuration":{
+        "value":"true"
+      }
+    }]
+  }]
+}'</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_412630">
+          <text>'{
+  "Admin":{
+    "Access":{"value":"false"}
+  },
+  "Landing":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "Field1":{
+        "value":"true"
+      },
+      "Field2":{
+        "value":"false"
+      },
+      "Field3":{
+        "value":"true"
+      },
+      "Field4":{
+        "value":"false"
+      }
+    }]
+  }],
+  "Project":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "Configuration":{
+        "value":"false"
+      }
+    }]
+  }],
+  "Feature":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "AddFeature":{
+        "value":"true"
+      }
+    }]
+  }]
+}'</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_552101">
+          <text>'{
+  "Admin": {
+    "Access": {
+      "value": "false"
+    }
+  },
+  "Landing":[{
+    "Access":{"value":"false"}
+  }],
+  "Project": [
+    {
+      "Access": {
+        "value": "true"
+      },
+      "Fields": [
+        {
+          "AddProject": {
+            "value": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "Feature": {
+    "Access": {
+      "value": "false"
+    }
+  }
+}'</text>
+        </outputEntry>
+      </rule>
+       
+<rule id="DecisionRule_958992">
+        <inputEntry id="UnaryTests_457140">
+          <text>"admin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_711865">
+          <text>"Screen"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_631964">
+          <text>'{
+  "Admin": [{
+    "Access": {
+      "value": "true"
+    },
+    "Fields":[{
+    "Organisation": {
+      "value": "true"
+    },
+    "Userrole": {
+      "value": "true"
+    },
+    "Addrole": {
+      "value": "true"
+    }
+    }]
+  }],
+  "Landing":[{
+    "Access":{
+      "value":"true"
+    },
+    "Fields":[{
+      "Field1":{
+        "value":"true"
+      },
+      "Field2":{
+        "value":"true"
+      },
+      "Field3":{
+        "value":"true"
+      },
+      "Field4":{
+        "value":"true"
+      }
+    }]
+  }],
+  "Project":[{
+    "Access":{
+      "value":"true"
+    },
+    "Fields":[{
+      "Configuration":{
+        "value":"true"
+      }
+    }]
+  }]
+}'</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_274583">
+          <text>'{
+  "Admin":{
+    "Access":{"value":"false"}
+  },
+  "Landing":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "Field1":{
+        "value":"true"
+      },
+      "Field2":{
+        "value":"false"
+      },
+      "Field3":{
+        "value":"true"
+      },
+      "Field4":{
+        "value":"false"
+      }
+    }]
+  }],
+  "Project":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "Configuration":{
+        "value":"false"
+      }
+    }]
+  }],
+  "Feature":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "AddFeature":{
+        "value":"true"
+      }
+    }]
+  }]
+}'</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_666867">
+          <text>'{
+  "Admin": {
+    "Access": {
+      "value": "false"
+    }
+  },
+  "Landing":[{
+    "Access":{"value":"false"}
+  }],
+  "Project": [
+    {
+      "Access": {
+        "value": "true"
+      },
+      "Fields": [
+        {
+          "AddProject": {
+            "value": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "Feature": {
+    "Access": {
+      "value": "false"
+    }
+  }
+}'</text>
+        </outputEntry>
+      </rule>
+       
+<rule id="DecisionRule_121114">
+        <inputEntry id="UnaryTests_951915">
+          <text>"logout"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_772538">
+          <text>"Screen"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_424403">
+          <text>'{
+  "Admin": [{
+    "Access": {
+      "value": "true"
+    },
+    "Fields":[{
+    "Organisation": {
+      "value": "true"
+    },
+    "Userrole": {
+      "value": "true"
+    },
+    "Addrole": {
+      "value": "true"
+    }
+    }]
+  }],
+  "Landing":[{
+    "Access":{
+      "value":"true"
+    },
+    "Fields":[{
+      "Field1":{
+        "value":"true"
+      },
+      "Field2":{
+        "value":"true"
+      },
+      "Field3":{
+        "value":"true"
+      },
+      "Field4":{
+        "value":"true"
+      }
+    }]
+  }],
+  "Project":[{
+    "Access":{
+      "value":"true"
+    },
+    "Fields":[{
+      "Configuration":{
+        "value":"true"
+      }
+    }]
+  }]
+}'</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_863191">
+          <text>'{
+  "Admin":{
+    "Access":{"value":"false"}
+  },
+  "Landing":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "Field1":{
+        "value":"true"
+      },
+      "Field2":{
+        "value":"false"
+      },
+      "Field3":{
+        "value":"true"
+      },
+      "Field4":{
+        "value":"false"
+      }
+    }]
+  }],
+  "Project":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "Configuration":{
+        "value":"false"
+      }
+    }]
+  }],
+  "Feature":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "AddFeature":{
+        "value":"true"
+      }
+    }]
+  }]
+}'</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_296849">
+          <text>'{
+  "Admin": {
+    "Access": {
+      "value": "false"
+    }
+  },
+  "Landing":[{
+    "Access":{"value":"false"}
+  }],
+  "Project": [
+    {
+      "Access": {
+        "value": "true"
+      },
+      "Fields": [
+        {
+          "AddProject": {
+            "value": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "Feature": {
+    "Access": {
+      "value": "false"
+    }
+  }
+}'</text>
+        </outputEntry>
+      </rule>
+       
+<rule id="DecisionRule_705148">
+        <inputEntry id="UnaryTests_948703">
+          <text>"login"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_388381">
+          <text>"Screen"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_462701">
+          <text>'{
+  "Admin": [{
+    "Access": {
+      "value": "true"
+    },
+    "Fields":[{
+    "Organisation": {
+      "value": "true"
+    },
+    "Userrole": {
+      "value": "true"
+    },
+    "Addrole": {
+      "value": "true"
+    }
+    }]
+  }],
+  "Landing":[{
+    "Access":{
+      "value":"true"
+    },
+    "Fields":[{
+      "Field1":{
+        "value":"true"
+      },
+      "Field2":{
+        "value":"true"
+      },
+      "Field3":{
+        "value":"true"
+      },
+      "Field4":{
+        "value":"true"
+      }
+    }]
+  }],
+  "Project":[{
+    "Access":{
+      "value":"true"
+    },
+    "Fields":[{
+      "Configuration":{
+        "value":"true"
+      }
+    }]
+  }]
+}'</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_509961">
+          <text>'{
+  "Admin":{
+    "Access":{"value":"false"}
+  },
+  "Landing":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "Field1":{
+        "value":"true"
+      },
+      "Field2":{
+        "value":"false"
+      },
+      "Field3":{
+        "value":"true"
+      },
+      "Field4":{
+        "value":"false"
+      }
+    }]
+  }],
+  "Project":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "Configuration":{
+        "value":"false"
+      }
+    }]
+  }],
+  "Feature":[{
+    "Access":{"value":"true"},
+    "Fields":[{
+      "AddFeature":{
+        "value":"true"
+      }
+    }]
+  }]
+}'</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_680501">
+          <text>'{
+  "Admin": {
+    "Access": {
+      "value": "false"
+    }
+  },
+  "Landing":[{
+    "Access":{"value":"false"}
+  }],
+  "Project": [
+    {
+      "Access": {
+        "value": "true"
+      },
+      "Fields": [
+        {
+          "AddProject": {
+            "value": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "Feature": {
+    "Access": {
+      "value": "false"
+    }
+  }
+}'</text>
+        </outputEntry>
+      </rule>
+       
+           </decisionTable>
+  </decision>
+</definitions>

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.app.prefix }}-system-entry
+  namespace: {{ .Values.app.namespace }}
+spec:
+  type: NodePort
+  ports:
+  - name: nginx-app
+    port: {{ .Values.service.desktop.port }}
+    targetPort: {{ .Values.service.desktop.targetPort }}
+  - name: {{ .Values.service.apigateway.name }}
+    port: {{ .Values.service.apigateway.port }}
+    targetPort: {{ .Values.service.apigateway.targetPort }}
+    nodePort: {{ .Values.service.apigateway.nodePort }}
+  selector:
+    app: {{ .Values.app.prefix }}-system-entry
